@@ -96,7 +96,7 @@ export class ButtonsComponent implements OnInit {
   }
 
   operator_pressed(op: string){
-    if(this.current_result == "Can't divide by zero" || this.current_result == "Can't evaluate negative roots"){
+    if(this.current_result == "Can't divide by zero" || this.current_result == "Negative root detected"){
       this.clear_all();
       return;
     }
@@ -109,7 +109,7 @@ export class ButtonsComponent implements OnInit {
         this.newOperand1Event.emit((parseFloat(this.current_result) * 1).toString());
         this.newOpEvent.emit(op);
         this.newOperand2Event.emit('');
-        if(this.current_result == "Can't divide by zero" || this.current_result == "Can't evaluate negative roots"){
+        if(this.current_result == "Can't divide by zero" || this.current_result == "Negative root detected"){
           this.newViewEvent.emit(this.current_result);
           return;
         }
@@ -145,7 +145,7 @@ export class ButtonsComponent implements OnInit {
   }
 
   special(special_op: string){
-    if(this.current_result == "Can't divide by zero" || this.current_result == "Can't evaluate negative roots"){
+    if(this.current_result == "Can't divide by zero" || this.current_result == "Negative root detected"){
       this.clear_all();
       return;
     }
@@ -157,7 +157,7 @@ export class ButtonsComponent implements OnInit {
     .subscribe(result => {
       this.current_result = result.toString();
       this.true_result = result.toString();
-      if(this.current_result == "Can't divide by zero" || this.current_result == "Can't evaluate negative roots"){
+      if(this.current_result == "Can't divide by zero" || this.current_result == "Negative root detected"){
         this.newViewEvent.emit(this.current_result);
         return;
       }
@@ -180,7 +180,7 @@ export class ButtonsComponent implements OnInit {
   }
 
   equal_pressed(){
-    if(this.current_result == "Can't divide by zero" || this.current_result == "Can't evaluate negative roots"){
+    if(this.current_result == "Can't divide by zero" || this.current_result == "Negative root detected"){
       this.clear_all();
       return;
     }
@@ -193,7 +193,7 @@ export class ButtonsComponent implements OnInit {
     .subscribe(result => {
       this.current_result = result.toString();
       this.true_result = result.toString();
-      if(this.current_result == "Can't divide by zero" || this.current_result == "Can't evaluate negative roots"){
+      if(this.current_result == "Can't divide by zero" || this.current_result == "Negative root detected"){
         this.newViewEvent.emit(this.current_result);
         return;
       }

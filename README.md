@@ -1,27 +1,25 @@
-# CalculatorFrontEnd
+# Web Calculator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
+A simple web application made with angular as a frontend and spring boot for backend.
 
-## Development server
+## How to run
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Open the angular CLI.
+Navigate to the `Calculator_FrontEnd` directory.
+Run `ng serve` for a dev server.
+Navigate to `http://localhost:4200/`. (The application will automatically reload if you change any of the source files)
 
-## Code scaffolding
+Open the `Calculator_BackEnd` project file in any ide.
+Run the `main` function in `CalculatorBackEndApplication.java`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+All arithmetic operations are carried out on the backend server.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Performs basic arithmetic operations (+, -, * and /) and some basic functions (squaring, taking the square root, evaluating percentage and inversing) for both positive and negative numbers with double precision.
 
-## Running unit tests
+Different operations can be carried out without the need of pressing the equal button. (for example, pressing '2' '+' '3' and then pressing '-' will display 5 on the screen and initiate a new subtraction operation) (the exact same functionality of the windows calculator)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Has a second mini-display to show the on-going operation.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If an error occures, the main display will show a message that provides the user with the type of error. (ie. out of bounds, division by zero, square root of negative numbers, ...)

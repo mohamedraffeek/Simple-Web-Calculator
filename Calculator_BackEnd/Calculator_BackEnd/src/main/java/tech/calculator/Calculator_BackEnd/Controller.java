@@ -51,7 +51,7 @@ public class Controller {
     }
     @PostMapping("/sqrt/{num}")
     public String sqrt(@PathVariable("num") double num){
-        if(num < 0) return "Can't evaluate negative roots";
+        if(num < 0) return "Negative root detected";
         double result = service.sqrt(num);
         return result + "";
     }
