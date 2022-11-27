@@ -102,13 +102,13 @@ export class ButtonsComponent implements OnInit {
     }
     if(this.op != ''){
       this.operand2 = parseFloat(this.true_result);
-      this.newOperand1Event.emit(this.operand1.toString());
-      this.newOperand2Event.emit(this.operand2.toString());
-      this.newOpEvent.emit(this.op);
       this.http.post<string>(`http://localhost:8080/operate/${this.op}/${this.operand1}/${this.operand2}`, JSON, httpOptions)
       .subscribe(result => {
         this.current_result = result.toString();
         this.true_result = result.toString();
+        this.newOperand1Event.emit((parseFloat(this.current_result) * 1).toString());
+        this.newOpEvent.emit(op);
+        this.newOperand2Event.emit('');
         if(this.current_result == "Can't divide by zero" || this.current_result == "Can't evaluate negative roots"){
           this.newViewEvent.emit(this.current_result);
           return;
@@ -126,6 +126,10 @@ export class ButtonsComponent implements OnInit {
       this.clear = true;
       this.lock_equal1 = true;
       this.lock_equal2 = true;
+    }else{
+      this.newOperand1Event.emit(this.current_result);
+      this.newOpEvent.emit(op);
+      this.newOperand2Event.emit('');
     }
     this.lock_equal1 = false;
     this.operand1 = parseFloat(this.true_result);
@@ -170,7 +174,8 @@ export class ButtonsComponent implements OnInit {
         this.operand2 = parseFloat(result.toString());
       }
     });
-    
+    this.lock_equal1 = true;
+    this.lock_equal2 = true;
     this.clear = true;
   }
 
@@ -182,7 +187,7 @@ export class ButtonsComponent implements OnInit {
     if(this.lock_equal1 || this.lock_equal2) return;
     this.operand2 = parseFloat(this.true_result);
     this.newOperand1Event.emit(this.operand1.toString());
-    this.newOperand2Event.emit(this.operand2.toString());
+    this.newOperand2Event.emit(this.operand2.toString() + ' =');
     this.newOpEvent.emit(this.op);
     this.http.post<string>(`http://localhost:8080/operate/${this.op}/${this.operand1}/${this.operand2}`, JSON, httpOptions)
     .subscribe(result => {
