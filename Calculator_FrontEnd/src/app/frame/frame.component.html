@@ -1,0 +1,6 @@
+<div class = "calculator_centering">
+    <div class = "calculator_frame">
+        <app-display [view] = "newView"></app-display>
+        <app-buttons (newViewEvent) = "updateView($event)"></app-buttons>
+    </div>
+</div>

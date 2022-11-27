@@ -1,0 +1,14 @@
+.calculator_centering{
+    display: flex;
+    height: 700px;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator_frame{
+    background-color: rgba(3, 3, 3, 0.768);
+    height: 385px;
+    width: 320px;
+    display: grid;
+    border-radius: 7px;
+}

@@ -1,0 +1,13 @@
+.display{
+    display: flex;
+    height: 80px;
+    width: 97%;
+    display: grid;
+    font-family: 'Segoe UI';
+    font-size: x-large;
+    font-weight: 500;
+    color: white;
+    text-align: right;
+    align-items: flex-end;
+    border: none;
+}
