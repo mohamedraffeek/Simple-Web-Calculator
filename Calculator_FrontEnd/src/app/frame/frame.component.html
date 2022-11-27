@@ -1,6 +1,7 @@
 <div class = "calculator_centering">
     <div class = "calculator_frame">
-        <app-display [view] = "newView"></app-display>
-        <app-buttons (newViewEvent) = "updateView($event)"></app-buttons>
+        <app-display [view] = "newView" [operand1] = "newOperand1" [operand2] = "newOperand2" [op] = "newOp"></app-display>
+        <app-buttons (newViewEvent) = "updateView($event)" (newOperand1Event) = "updateOperand1($event)"
+        (newOperand2Event) = "updateOperand2($event)" (newOpEvent) = "updateOp($event)"></app-buttons>
     </div>
 </div>

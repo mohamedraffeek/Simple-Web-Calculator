@@ -1,6 +1,20 @@
-.display{
-    display: flex;
-    height: 80px;
+.display1{
+    display: grid;
+    height: 40px;
+    width: 97%;
+    display: grid;
+    font-family: 'Segoe UI';
+    font-size: large;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.489);
+    text-align: right;
+    align-items: flex-end;
+    border: none;
+}
+
+.display2{
+    display: grid;
+    height: 40px;
     width: 97%;
     display: grid;
     font-family: 'Segoe UI';

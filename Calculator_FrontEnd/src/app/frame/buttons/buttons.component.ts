@@ -26,6 +26,9 @@ export class ButtonsComponent implements OnInit {
   lock_equal2: boolean = false;
   special_operand: number = 0;
   @Output() newViewEvent = new EventEmitter<string>;
+  @Output() newOperand1Event = new EventEmitter<string>;
+  @Output() newOperand2Event = new EventEmitter<string>;
+  @Output() newOpEvent = new EventEmitter<string>;
 
   constructor(private http: HttpClient) {
   }
@@ -33,9 +36,11 @@ export class ButtonsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sendData(){
+  sendView(){
     this.newViewEvent.emit(this.current_result);
   }
+  
+
 
   update_display(input: string){
     if(this.lock_equal2 == true){
@@ -73,6 +78,9 @@ export class ButtonsComponent implements OnInit {
     this.dot = false;
     this.lock_equal1 = false;
     this.lock_equal2 = false;
+    this.newOperand1Event.emit('');
+    this.newOperand2Event.emit('');
+    this.newOpEvent.emit('');
   }
 
   dot_pressed(){
@@ -94,6 +102,9 @@ export class ButtonsComponent implements OnInit {
     }
     if(this.op != ''){
       this.operand2 = parseFloat(this.true_result);
+      this.newOperand1Event.emit(this.operand1.toString());
+      this.newOperand2Event.emit(this.operand2.toString());
+      this.newOpEvent.emit(this.op);
       this.http.post<string>(`http://localhost:8080/operate/${this.op}/${this.operand1}/${this.operand2}`, JSON, httpOptions)
       .subscribe(result => {
         this.current_result = result.toString();
@@ -135,6 +146,9 @@ export class ButtonsComponent implements OnInit {
       return;
     }
     this.special_operand = parseFloat(this.true_result);
+    this.newOperand1Event.emit('');
+    this.newOperand2Event.emit(this.special_operand.toString());
+    this.newOpEvent.emit(special_op + " of");
     this.http.post<string>(`http://localhost:8080/operate/${special_op}/${this.special_operand}`, JSON, httpOptions)
     .subscribe(result => {
       this.current_result = result.toString();
@@ -167,6 +181,9 @@ export class ButtonsComponent implements OnInit {
     }
     if(this.lock_equal1 || this.lock_equal2) return;
     this.operand2 = parseFloat(this.true_result);
+    this.newOperand1Event.emit(this.operand1.toString());
+    this.newOperand2Event.emit(this.operand2.toString());
+    this.newOpEvent.emit(this.op);
     this.http.post<string>(`http://localhost:8080/operate/${this.op}/${this.operand1}/${this.operand2}`, JSON, httpOptions)
     .subscribe(result => {
       this.current_result = result.toString();
